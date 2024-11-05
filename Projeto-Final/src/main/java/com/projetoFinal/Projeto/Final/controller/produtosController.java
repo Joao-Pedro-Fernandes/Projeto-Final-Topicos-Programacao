@@ -53,7 +53,7 @@ public class produtosController {
         return "redirect:/produtos/lista";
     }
 
-    @DeleteMapping
+    @DeleteMapping("/excluir")
     @Transactional
     public String removeProduto(Long id)
     {

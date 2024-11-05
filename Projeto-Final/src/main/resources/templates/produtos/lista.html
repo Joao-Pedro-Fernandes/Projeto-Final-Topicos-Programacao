@@ -30,10 +30,10 @@
         <td th:text="${produto.nome}">Produto A</td>
         <td th:text="${produto.classe}">Classe X</td>
         <td class="actions">
-            <a th:href="@{'/produtos/editar/' + ${produto.id}}">
+            <a th:href="@{'/produtos/formulario?id=' + ${produto.id}}">
                 <button class="edit-btn">Editar</button>
             </a>
-            <form th:action="@{'/produtos/excluir/' + ${produto.id}}" method="post" th:onsubmit="return confirm('Tem certeza que deseja excluir este produto?');">
+            <form th:action="@{'/produtos/excluir?id=' + ${produto.id}}" method="post" th:onsubmit="return confirm('Tem certeza que deseja excluir este produto?');">
                 <button type="submit" class="delete-btn">Excluir</button>
             </form>
         </td>
