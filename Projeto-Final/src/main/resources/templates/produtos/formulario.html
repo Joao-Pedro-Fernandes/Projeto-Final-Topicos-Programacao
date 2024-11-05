@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-br"
+      xmlns:th="http://thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{template.html}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastrar Produto</title>
+    <style>
+
+    </style>
+</head>
+<body>
+
+<h2>Cadastrar Produto</h2>
+
+<form action="/produtos/salvar" method="post">
+    <div>
+        <label for="nome">Nome do Produto</label>
+        <input type="text" id="nome" name="nome" required>
+    </div>
+
+    <div>
+        <label for="classe">Classe do Produto</label>
+        <input type="text" id="classe" name="classe" required>
+    </div>
+
+    <div class="buttons">
+        <button type="submit" class="save-btn">Salvar</button>
+        <a href="/produtos">
+            <button type="button" class="list-btn">Voltar à Lista</button>
+        </a>
+    </div>
+</form>
+
+</body>
+</html>

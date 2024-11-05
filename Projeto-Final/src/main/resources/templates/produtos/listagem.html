@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-br"
+      xmlns:th="http://thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{template.html}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tabela de Produtos</title>
+    <style>
+    </style>
+</head>
+<body>
+
+<h2>Lista de Produtos</h2>
+
+<table>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Nome</th>
+        <th>Classe</th>
+        <th>Ações</th>
+    </tr>
+    </thead>
+    <tbody>
+    <!-- Thymeleaf iterando pela lista de produtos -->
+    <tr th:each="produto : ${produtos}">
+        <td th:text="${produto.id}">1</td>
+        <td th:text="${produto.nome}">Produto A</td>
+        <td th:text="${produto.classe}">Classe X</td>
+        <td class="actions">
+            <a th:href="@{'/produtos/editar/' + ${produto.id}}">
+                <button class="edit-btn">Editar</button>
+            </a>
+            <form th:action="@{'/produtos/excluir/' + ${produto.id}}" method="post" th:onsubmit="return confirm('Tem certeza que deseja excluir este produto?');">
+                <button type="submit" class="delete-btn">Excluir</button>
+            </form>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+</body>
+</html>
