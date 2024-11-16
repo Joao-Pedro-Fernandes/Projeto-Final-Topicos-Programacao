@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt-BR"
+      xmlns:th="http://thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{template.html}">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Listagem de Fichas</title>
+</head>
+<body>
+
+<div layout:fragment="conteudo">
+    <h1>Lista de Fichas</h1>
+    <table>
+        <tr>
+            <th>Usuário</th>
+            <th>Produto</th>
+            <th>Doença Cardiovascular</th>
+            <th>Hipertensão Arterial</th>
+            <th>Hipotensão Arterial</th>
+            <th>Arritmia</th>
+            <th>Alterações no Sistema Nervoso</th>
+            <th>Dor de Cabeça</th>
+            <th>Fraqueza Muscular</th>
+            <th>Tremedeira</th>
+            <th>Tremor Muscular</th>
+            <th>Visão Turva</th>
+            <th>Agitação</th>
+            <th>Vertigens</th>
+            <th>Formigamento em MMSS</th>
+            <th>Incoordenação Motora</th>
+            <th>Ações</th>
+        </tr>
+        <tr th:each="ficha : ${fichas}">
+            <td th:text="${ficha.usuario.id}+'-'+${ficha.usuario.nome}"></td>
+            <td th:text="${ficha.produto.nome} + '-' + ${ficha.produto.classe}"></td>
+
+            <!-- Campos booleanos -->
+            <td th:text="${ficha.apresentaDoencaCardiovascular != null ? 'Sim' : 'Não'}"></td>
+            <td th:text="${ficha.hipertensaoArterial != null ? 'Sim' : 'Não'}"></td>
+            <td th:text="${ficha.hipotensaoArterial != null ? 'Sim' : 'Não'}"></td>
+            <td th:text="${ficha.arritmia != null ? 'Sim' : 'Não'}"></td>
+            <td th:text="${ficha.apresentaAlgumaAlteracaoSistemaNervoso != null ? 'Sim' : 'Não'}"></td>
+            <td th:text="${ficha.dorDeCabeca != null ? 'Sim' : 'Não'}"></td>
+            <td th:text="${ficha.fraquezaMuscular != null ? 'Sim' : 'Não'}"></td>
+            <td th:text="${ficha.tremedeira != null ? 'Sim' : 'Não'}"></td>
+            <td th:text="${ficha.tremorMuscular != null ? 'Sim' : 'Não'}"></td>
+            <td th:text="${ficha.visaoTurva != null ? 'Sim' : 'Não'}"></td>
+            <td th:text="${ficha.agitacao != null ? 'Sim' : 'Não'}"></td>
+            <td th:text="${ficha.vertigens != null ? 'Sim' : 'Não'}"></td>
+            <td th:text="${ficha.formigamentoEmMMSS != null ? 'Sim' : 'Não'}"></td>
+            <td th:text="${ficha.incoordenacaoMotora != null ? 'Sim' : 'Não'}"></td>
+
+            <td>
+                <a th:href="@{/fichas/formulario?id={id}(id=${ficha.id})}">Editar</a>
+                <form action="/fichas/excluir" method="post">
+                    <input type="hidden" name="_method" value="delete" />
+                    <input type="hidden" name="id" th:value="${ficha.id}"/>
+                    <input type="submit" value="Excluir" />
+                </form>
+            </td>
+        </tr>
+    </table>
+
+    <a href="/fichas/formulario">Novo</a>
+    <a href="/menu">Voltar para o início</a>
+</div>
+
+</body>
+</html>

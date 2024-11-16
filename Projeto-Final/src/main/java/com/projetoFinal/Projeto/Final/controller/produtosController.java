@@ -1,9 +1,9 @@
 package com.projetoFinal.Projeto.Final.controller;
 
+import com.projetoFinal.Projeto.Final.model.produtos.AlteraProdutos;
 import com.projetoFinal.Projeto.Final.model.produtos.CadastroProduto;
 import com.projetoFinal.Projeto.Final.model.produtos.Produto;
 import com.projetoFinal.Projeto.Final.model.produtos.ProdutosRepository;
-import jakarta.persistence.Table;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

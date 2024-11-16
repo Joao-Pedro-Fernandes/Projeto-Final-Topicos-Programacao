@@ -1,6 +1,5 @@
 package com.projetoFinal.Projeto.Final.model.produtos;
 
-import com.projetoFinal.Projeto.Final.controller.AlteraProdutos;
 import jakarta.persistence.*;
 
 @Entity

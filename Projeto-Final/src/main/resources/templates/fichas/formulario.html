@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="pt-BR"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{template.html}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Fichas</title>
+
+</head>
+<body>
+<div class="form-container" layout:fragment="conteudo">
+    <h1>Cadastro de Fichas</h1>
+
+    <form th:action="@{'/fichas/formulario'}" method="POST">
+        <input type="hidden" name="_method" value="put" th:if="${fichas != null}">
+        <input type="hidden" name="id" th:value="${fichas?.id}">
+
+        <div>
+            <label for="usuario">Usuário:</label>
+            <select id="usuario" name="usuario">
+                <option value="">Selecione um usuário</option>
+                <th:block th:each="user : ${usuarios}">
+                    <option th:if="${fichas?.usuario != null}"
+                            th:value="${user.id}"
+                            th:text="${user.nome}"
+                            th:selected="${user.id == fichas?.usuario.id}"></option>
+                    <option th:if="${fichas?.usuario == null}"
+                            th:value="${user.id}"
+                            th:text="${user.nome}"
+                            ></option>
+                </th:block>
+            </select>
+        </div>
+
+        <div>
+            <label for="produto">Produto:</label>
+            <select id="produto" name="produto">
+                <option value="">Selecione um Produto</option>
+                <th:block th:each="prod : ${produtos}">
+                    <option th:if="${fichas?.produto != null}"
+                            th:value="${prod.id}"
+                            th:text="${prod.nome}"
+                            th:selected="${prod.id == fichas?.produto.id}"></option>
+                    <option th:if="${fichas?.produto == null}"
+                            th:value="${prod.id}"
+                            th:text="${prod.nome}"
+                            ></option>
+                </th:block>
+            </select>
+        </div>
+
+        <div class="checkbox-group">
+            <div class="checkbox-item">
+                <input type="checkbox" id="apresentaDoencaCardiovascular" name="apresentaDoencaCardiovascular" th:checked="${fichas?.apresentaDoencaCardiovascular}">
+                <label for="apresentaDoencaCardiovascular">Apresenta Doença Cardiovascular</label>
+            </div>
+            <div class="checkbox-item">
+                <input type="checkbox" id="hipertensaoArterial" name="hipertensaoArterial" th:checked="${fichas?.hipertensaoArterial}">
+                <label for="hipertensaoArterial">Hipertensão Arterial</label>
+            </div>
+            <div class="checkbox-item">
+                <input type="checkbox" id="hipotensaoArterial" name="hipotensaoArterial" th:checked="${fichas?.hipotensaoArterial}">
+                <label for="hipotensaoArterial">Hipotensão Arterial</label>
+            </div>
+            <div class="checkbox-item">
+                <input type="checkbox" id="arritmia" name="arritmia" th:checked="${fichas?.arritmia}">
+                <label for="arritmia">Arritmia</label>
+            </div>
+            <div class="checkbox-item">
+                <input type="checkbox" id="apresentaAlgumaAlteracaoSistemaNervoso" name="apresentaAlgumaAlteracaoSistemaNervoso" th:checked="${fichas?.apresentaAlgumaAlteracaoSistemaNervoso}">
+                <label for="apresentaAlgumaAlteracaoSistemaNervoso">Apresenta Alguma Alteração no Sistema Nervoso</label>
+            </div>
+            <div class="checkbox-item">
+                <input type="checkbox" id="dorDeCabeca" name="dorDeCabeca" th:checked="${fichas?.dorDeCabeca}">
+                <label for="dorDeCabeca">Dor de Cabeça</label>
+            </div>
+            <div class="checkbox-item">
+                <input type="checkbox" id="fraquezaMuscular" name="fraquezaMuscular" th:checked="${fichas?.fraquezaMuscular}">
+                <label for="fraquezaMuscular">Fraqueza Muscular</label>
+            </div>
+            <div class="checkbox-item">
+                <input type="checkbox" id="tremedeira" name="tremedeira" th:checked="${fichas?.tremedeira}">
+                <label for="tremedeira">Tremedeira</label>
+            </div>
+            <div class="checkbox-item">
+                <input type="checkbox" id="tremorMuscular" name="tremorMuscular" th:checked="${fichas?.tremorMuscular}">
+                <label for="tremorMuscular">Tremor Muscular</label>
+            </div>
+            <div class="checkbox-item">
+                <input type="checkbox" id="visaoTurva" name="visaoTurva" th:checked="${fichas?.visaoTurva}">
+                <label for="visaoTurva">Visão Turva</label>
+            </div>
+            <div class="checkbox-item">
+                <input type="checkbox" id="agitacao" name="agitacao" th:checked="${fichas?.agitacao}">
+                <label for="agitacao">Agitação</label>
+            </div>
+            <div class="checkbox-item">
+                <input type="checkbox" id="vertigens" name="vertigens" th:checked="${fichas?.vertigens}">
+                <label for="vertigens">Vertigens</label>
+            </div>
+            <div class="checkbox-item">
+                <input type="checkbox" id="formigamentoEmMMSS" name="formigamentoEmMMSS" th:checked="${fichas?.formigamentoEmMMSS}">
+                <label for="formigamentoEmMMSS">Formigamento em MMSS</label>
+            </div>
+            <div class="checkbox-item">
+                <input type="checkbox" id="incoordenacaoMotora" name="incoordenacaoMotora" th:checked="${fichas?.incoordenacaoMotora}">
+                <label for="incoordenacaoMotora">Incoordenação Motora</label>
+            </div>
+        </div>
+
+
+        <input type="submit" th:value="${fichas == null ? 'Cadastrar Ficha' : 'Atualizar Ficha'}">
+
+    </form>
+
+    <div class="back-link">
+        <a href="/menu">Voltar para o início</a>
+    </div>
+</div>
+</body>
+</html>
