@@ -31,7 +31,9 @@
             <th>Vertigens</th>
             <th>Formigamento em MMSS</th>
             <th>Incoordenação Motora</th>
+            <th>Data</th>
             <th>Ações</th>
+
         </tr>
         <tr th:each="ficha : ${fichas}">
             <td th:text="${ficha.usuario.id}+'-'+${ficha.usuario.nome}"></td>
@@ -52,6 +54,7 @@
             <td th:text="${ficha.vertigens != null ? 'Sim' : 'Não'}"></td>
             <td th:text="${ficha.formigamentoEmMMSS != null ? 'Sim' : 'Não'}"></td>
             <td th:text="${ficha.incoordenacaoMotora != null ? 'Sim' : 'Não'}"></td>
+            <td th:text="${ficha.dataFicha}"></td>
 
             <td>
                 <a th:href="@{/fichas/formulario?id={id}(id=${ficha.id})}">Editar</a>

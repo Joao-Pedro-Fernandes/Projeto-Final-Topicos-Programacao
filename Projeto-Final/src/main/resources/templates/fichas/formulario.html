@@ -108,6 +108,10 @@
                 <input type="checkbox" id="incoordenacaoMotora" name="incoordenacaoMotora" th:checked="${fichas?.incoordenacaoMotora}">
                 <label for="incoordenacaoMotora">Incoordenação Motora</label>
             </div>
+            <div class="date-time" th:if="${fichas != null}">
+                <label for="dataFicha">Data da Ficha:</label>
+                <input type="date" id="dataFicha" name="dataFicha" th:value="${fichas?.dataFicha}" readonly>
+            </div>
         </div>
 
 

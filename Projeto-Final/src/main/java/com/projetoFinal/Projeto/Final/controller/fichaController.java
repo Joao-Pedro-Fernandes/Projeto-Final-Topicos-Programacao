@@ -13,6 +13,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
+import java.util.Date;
+
 @Controller
 @RequestMapping("/fichas")
 public class fichaController {
@@ -34,6 +37,7 @@ public class fichaController {
     public String cadastrarFicha(CadastroFicha ficha)
     {
         Ficha p = new Ficha(ficha);
+        p.setDataFicha(LocalDate.now());
         repository.save(p);
         return "redirect:/fichas/lista";
     }

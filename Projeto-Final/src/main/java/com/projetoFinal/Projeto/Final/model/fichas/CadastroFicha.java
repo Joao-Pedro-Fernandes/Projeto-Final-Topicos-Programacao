@@ -3,6 +3,9 @@ package com.projetoFinal.Projeto.Final.model.fichas;
 import com.projetoFinal.Projeto.Final.model.produtos.Produto;
 import com.projetoFinal.Projeto.Final.model.usuarios.Usuario;
 
+import java.time.LocalDate;
+import java.util.Date;
+
 public record CadastroFicha(
         Produto produto,
         Usuario usuario,
@@ -19,6 +22,7 @@ public record CadastroFicha(
         Boolean agitacao,
         Boolean vertigens,
         Boolean formigamentoEmMMSS,
-        Boolean incoordenacaoMotora
+        Boolean incoordenacaoMotora,
+        LocalDate dataFicha
 ) {}
 

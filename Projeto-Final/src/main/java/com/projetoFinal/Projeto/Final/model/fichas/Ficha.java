@@ -4,6 +4,9 @@ import com.projetoFinal.Projeto.Final.model.produtos.Produto;
 import com.projetoFinal.Projeto.Final.model.usuarios.Usuario;
 import jakarta.persistence.*;
 
+import java.time.LocalDate;
+import java.util.Date;
+
 @Entity
 @Table(name="Fichas")
 public class Ficha {
@@ -35,6 +38,7 @@ public class Ficha {
     private Boolean vertigens;
     private Boolean formigamentoEmMMSS;
     private Boolean incoordenacaoMotora;
+    private LocalDate dataFicha;
 
     public Ficha(){}
 
@@ -55,6 +59,7 @@ public class Ficha {
         this.vertigens = ficha.vertigens();
         this.formigamentoEmMMSS = ficha.formigamentoEmMMSS();
         this.incoordenacaoMotora = ficha.incoordenacaoMotora();
+        this.dataFicha = ficha.dataFicha();
     }
 
 
@@ -145,4 +150,8 @@ public class Ficha {
     public Boolean getIncoordenacaoMotora() {
         return incoordenacaoMotora;
     }
+
+    public LocalDate getDataFicha() {return dataFicha;}
+
+    public void setDataFicha(LocalDate dataFicha) {this.dataFicha = dataFicha;}
 }
