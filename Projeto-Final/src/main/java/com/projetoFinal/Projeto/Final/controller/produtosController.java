@@ -21,6 +21,8 @@ public class produtosController {
     public String listaProdutos(Model model)
     {
         model.addAttribute("produtos", repository.findAll());
+        model.addAttribute("qtdProdutos", repository.findQtdProdutos());
+
         return "/produtos/lista";
     }
 
