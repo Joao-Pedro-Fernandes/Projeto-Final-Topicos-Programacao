@@ -13,6 +13,14 @@
 
 <div layout:fragment="conteudo">
     <h1>Lista de Fichas</h1>
+
+    <form action="/fichas/buscarDataFicha" method="get">
+        <h2>Buscar por Data</h2>
+        <label for="data">Data:</label>
+        <input type="date" id="data" name="data" />
+        <button type="submit">Buscar</button>
+    </form>
+
     <table>
         <tr>
             <th>Usuário</th>
@@ -33,9 +41,9 @@
             <th>Incoordenação Motora</th>
             <th>Data</th>
             <th>Ações</th>
-
         </tr>
-        <tr th:each="ficha : ${fichas}">
+
+        <tr th:each="ficha : ${lista}">
             <td th:text="${ficha.usuario.id}+'-'+${ficha.usuario.nome}"></td>
             <td th:text="${ficha.produto.nome} + '-' + ${ficha.produto.classe}"></td>
 

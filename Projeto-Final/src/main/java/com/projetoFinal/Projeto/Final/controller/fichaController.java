@@ -9,12 +9,14 @@ import com.projetoFinal.Projeto.Final.model.produtos.ProdutosRepository;
 import com.projetoFinal.Projeto.Final.model.usuarios.UsuariosRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
 import java.util.Date;
+import java.util.List;
 
 @Controller
 @RequestMapping("/fichas")
@@ -74,4 +76,50 @@ public class fichaController {
         repository.deleteById(id);
         return "redirect:/fichas/lista";
     }
+
+    @GetMapping("/buscarNomeUsuario")
+    public String listarFichas(@RequestParam(value = "nome", required = false) String nome, Model model) {
+        List<Ficha> fichas;
+
+        if (nome == null || nome.isEmpty()) {
+            fichas = repository.findAll();
+        } else {
+            fichas = repository.findByUsuarioNome(nome);
+        }
+
+        model.addAttribute("lista", fichas);
+        return "/fichas/buscarNomeUsuario";
+    }
+
+    @GetMapping("/buscarNomeProduto")
+    public String listarFichasProduto(@RequestParam(value = "nome", required = false) String nome, Model model) {
+        List<Ficha> fichas;
+
+        if (nome == null || nome.isEmpty()) {
+            fichas = repository.findAll();
+        } else {
+            fichas = repository.findByProdutoNome(nome);
+        }
+        model.addAttribute("lista", fichas);
+        return "/fichas/buscarNomeProduto";
+    }
+
+    @GetMapping("/buscarDataFicha")
+    public String listarFichasData(@RequestParam(value = "data", required = false)
+                                   @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate data,
+                                   Model model) {
+
+        List<Ficha> fichas;
+
+        if (data == null) {
+            fichas = repository.findAll();
+        } else {
+            fichas = repository.findByDataFicha(data);
+        }
+
+        model.addAttribute("lista", fichas);
+        return "/fichas/buscarDataFicha";
+    }
+
+
 }
