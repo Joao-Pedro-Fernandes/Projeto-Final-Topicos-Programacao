@@ -19,6 +19,7 @@ public class usuariosController {
     @GetMapping("/lista")
     public String listaUsuarios(Model model)
     {
+        model.addAttribute("qtdUsuarios", repository.findQtdUsuarios());
         model.addAttribute("usuarios", repository.findAll());
         return "/usuarios/lista";
     }
